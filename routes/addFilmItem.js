@@ -9,7 +9,7 @@ item.post('/',(req,res)=>{
         description,rating,img,name
     })
     additem.save().then(succsses=>{
-        console.log('item saved');
+        res.status(200).json({message:'succsses'})
         
     }).catch(err=>{console.log(err)})
     

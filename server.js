@@ -15,6 +15,7 @@ app.use(express.json())
 app.use(express.urlencoded({
     extended: false
 }))
+
 //const mongoURI = 'mongodb+srv://hrach:hrach@cluster0.impfb.mongodb.net/mydb?retryWrites=true&w=majority'
 // const mongoURI = process.env.MONGODB_URL || 'mongodb+srv://virap:erevan10@cluster0-vxh3h.mongodb.net/test?retryWrites=true&w=majoritys';
  const mongoURI = "mongodb://localhost:27017/mydb"
@@ -40,7 +41,7 @@ mongoose
 //   }
 
 app.use('/additem',require('./routes/addFilmItem'))
-
+app.use('/deletmuve',require('./routes/deletmuve'))
 
 app.use((req,res,next)=>{
   const error = new Error('Note Found');
