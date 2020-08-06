@@ -1,27 +1,29 @@
 import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
 import Menu from './menu/menu'
 import { fetchData } from '../../actions/HomePageAtions'
+import { useDispatch,useSelector } from 'react-redux'
 import { Card } from 'antd';
 import Spiner from '../spiner'
 
 
 const { Meta } = Card;
 
-const Home = ({fetchData,movies,loader}) => {
+const Home = () => {
+
     useEffect(()=>{
-        fetchData('/additem/getitem')
+        dispatch(fetchData('/additem/getitem')) 
     },[])
 
-   
-    
+    const movies = useSelector(state => state.adminpanel.movies);
+    const loader = useSelector(state => state.reduser.loader)
+    const dispatch = useDispatch()
     
     return (
         <>
         <Menu/>
         
-        {loader?<Spiner/>:  <div className="cartWrap">
-       {movies && movies.map(item=>{
+        {!movies?<Spiner/>:  <div className="cartWrap">
+       {movies.map(item=>{
            return    <Card key={item._id}
            hoverable
            style={{ width: 240,margin: 20 }}
@@ -40,14 +42,5 @@ const Home = ({fetchData,movies,loader}) => {
 }
 
 
+export default Home
 
-const mapStateToProps = (state) => ({
-    movies:state.adminpanel.movies,
-    loader:state.reduser.loader
-})
-
-const mapDispatchToProps = {
-    fetchData,
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home)

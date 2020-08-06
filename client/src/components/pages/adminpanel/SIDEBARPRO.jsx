@@ -7,6 +7,7 @@ import {
     SidebarHeader,
     SidebarContent,
 } from 'react-pro-sidebar';
+import { Link } from 'react-router-dom'
 import 'react-pro-sidebar/dist/css/styles.css';
 import {BugOutlined, StarFilled, SettingOutlined,
        HighlightOutlined,LogoutOutlined,MenuUnfoldOutlined} from '@ant-design/icons';
@@ -24,8 +25,8 @@ export default function ({ setPage }) {
 
                 <Menu iconShape="square">
                     <SidebarHeader >
-                        <MenuItem onClick = {()=> setPage('home') } icon={< BugOutlined />} >Home  
-                        {/* <Link to="/antdmenue"/> */}
+                        <MenuItem icon={< BugOutlined />} >Home  
+                        <Link to="/"/>
                         </MenuItem>
 
                     </SidebarHeader>
